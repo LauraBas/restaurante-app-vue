@@ -1,28 +1,28 @@
 <template>
   <tr>
     <th scope="row">{{ dish.id }}</th>
-    <td v-on:click="activateInEditMode('title')" v-show="!isEditingTitle">{{ dish.title }}</td>
+    <td v-on:click="toggleEditMode('title')" v-show="!isEditingTitle">{{ dish.title }}</td>
     <span v-show="isEditingTitle">
       <div class="input-btn">
         <input v-model="dish.title" type="text" class="form-control" />
         <button class="btn btn-success" @click="onUpdate">Save</button>
-        <button class="btn btn-danger" @click="deActivateInEditMode()">cancel</button>
+        <button class="btn btn-warning" @click="toggleEditMode('title')">cancel</button>
       </div>
     </span>
-    <td v-on:click="activateInEditMode('description')" v-show="!isEditingDescription">{{ dish.description }}</td>
+    <td v-on:click="toggleEditMode('description')" v-show="!isEditingDescription">{{ dish.description }}</td>
       <span v-show="isEditingDescription">
         <div class="input-btn">
           <input v-model="dish.description" type="text" class="form-control" />
           <button class="btn btn-success" @click="onUpdate">Save</button>
-          <button class="btn btn-danger" @click="deActivateInEditMode()">cancel</button>
+          <button class="btn btn-warning" @click="toggleEditMode('description')">cancel</button>
         </div>  
       </span>    
-    <td v-on:click="activateInEditMode('price')" v-show="!isEditingPrice">{{ dish.price }}</td>
+    <td v-on:click="toggleEditMode('price')" v-show="!isEditingPrice">{{ dish.price }}</td>
     <span v-show="isEditingPrice">
       <div class="input-btn">
         <input v-model="dish.price" type="number" class="form-control" />
         <button class="btn btn-success" @click="onUpdate">Save</button>
-        <button class="btn btn-danger" @click="deActivateInEditMode()">cancel</button>
+        <button class="btn btn-warning" @click="toggleEditMode('price')">cancel</button>
       </div>
     </span>
     <td>
@@ -51,26 +51,21 @@ export default {
       this.$emit("onDelete", this.dish.id);
     },
     onUpdate() {
-      this.deActivateInEditMode();
+      this.toggleEditMode();
       this.$emit("onUpdate", this.dish.id);
     },
 
-    activateInEditMode(name) {
+    toggleEditMode(name) {
       if (name == "title") {
-        this.isEditingTitle = true;
+        this.isEditingTitle = !this.isEditingTitle;
       }
       if (name == "description") {
-        this.isEditingDescription = true;
+        this.isEditingDescription = !this.isEditingDescription;
       }
       if (name == "price") {
-        this.isEditingPrice = true;
+        this.isEditingPrice = !this.isEditingPrice;
       }
     },
-    deActivateInEditMode() {
-      this.isEditingTitle = false;
-      this.isEditingDescription = false;
-      this.isEditingPrice = false;
-    }
   }
 };
 </script>
