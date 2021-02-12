@@ -5,7 +5,7 @@
     <span v-show="isEditingTitle">
       <div class="input-btn">
         <input v-model="dish.title" type="text" class="form-control" />
-        <button class="btn btn-success" @click="onUpdate">Save</button>
+        <button class="btn btn-success" @click="onUpdate('title')">Save</button>
         <button class="btn btn-warning" @click="toggleEditMode('title')">cancel</button>
       </div>
     </span>
@@ -13,7 +13,7 @@
       <span v-show="isEditingDescription">
         <div class="input-btn">
           <input v-model="dish.description" type="text" class="form-control" />
-          <button class="btn btn-success" @click="onUpdate">Save</button>
+          <button class="btn btn-success" @click="onUpdate('description')">Save</button>
           <button class="btn btn-warning" @click="toggleEditMode('description')">cancel</button>
         </div>  
       </span>    
@@ -21,7 +21,7 @@
     <span v-show="isEditingPrice">
       <div class="input-btn">
         <input v-model="dish.price" type="number" class="form-control" />
-        <button class="btn btn-success" @click="onUpdate">Save</button>
+        <button class="btn btn-success" @click="onUpdate('price')">Save</button>
         <button class="btn btn-warning" @click="toggleEditMode('price')">cancel</button>
       </div>
     </span>
@@ -50,8 +50,8 @@ export default {
     onDelete() {
       this.$emit("onDelete", this.dish.id);
     },
-    onUpdate() {
-      this.toggleEditMode();
+    onUpdate(name) {
+      this.toggleEditMode(name)
       this.$emit("onUpdate", this.dish.id);
     },
 
