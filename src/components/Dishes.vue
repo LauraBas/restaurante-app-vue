@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    <button class="add" @click="toggleForm" v-show="!createMode">Add</button>
+  <section class="forms">
+    <button class="btn btn-info" @click="toggleForm" v-show="!createMode">Add</button>
     <Form v-show="createMode" 
     :form="form" 
     @storeDish="storeDish"
     @toggleForm="toggleForm" />
+  </section>
     <div>
-      <table>
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>Id</th>
@@ -86,25 +88,9 @@ export default {
 *{
   outline: none;
 }
-table {
-  margin: 1rem;
-  border-collapse: collapse;  
-}
-table td {
-  padding: 0.5rem;
-  border: 1px solid orange;
-}
-table th {
-  padding: 0.5rem;
-  border: 1px solid ForestGreen;
-}
-.add{
-  background-color: yellow;
-  border-radius: 10px;
-  border-width: 0.5px;
-  padding: 0.5em;
-  width: 5em;
-  margin: 0.5em;
+.forms{
+  margin: 1em;
+  align-self: self-start;
 }
 .container{
   display: flex;

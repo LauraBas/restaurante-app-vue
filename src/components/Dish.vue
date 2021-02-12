@@ -3,28 +3,30 @@
     <th scope="row">{{ dish.id }}</th>
     <td v-on:click="activateInEditMode('title')" v-show="!isEditingTitle">{{ dish.title }}</td>
     <span v-show="isEditingTitle">
-      <input v-model="dish.title" type="text" class="form-control" />
-      <button class="save" @click="onUpdate">Save</button>
-      <button class="cancel" @click="deActivateInEditMode()">Cancel</button>
+      <div class="input-btn">
+        <input v-model="dish.title" type="text" class="form-control" />
+        <button class="btn btn-success" @click="onUpdate">Save</button>
+        <button class="btn btn-danger" @click="deActivateInEditMode()">cancel</button>
+      </div>
     </span>
-    <td
-      v-on:click="activateInEditMode('description')"
-      v-show="!isEditingDescription"
-    >{{ dish.description }}</td>
-    <span v-show="isEditingDescription">
-      <input v-model="dish.description" type="text" class="form-control" />
-      <button class="save" @click="onUpdate">Save</button>
-      <button class="cancel" @click="deActivateInEditMode()">Cancel</button>
-    </span>
-
+    <td v-on:click="activateInEditMode('description')" v-show="!isEditingDescription">{{ dish.description }}</td>
+      <span v-show="isEditingDescription">
+        <div class="input-btn">
+          <input v-model="dish.description" type="text" class="form-control" />
+          <button class="btn btn-success" @click="onUpdate">Save</button>
+          <button class="btn btn-danger" @click="deActivateInEditMode()">cancel</button>
+        </div>  
+      </span>    
     <td v-on:click="activateInEditMode('price')" v-show="!isEditingPrice">{{ dish.price }}</td>
     <span v-show="isEditingPrice">
-      <input v-model="dish.price" type="number" class="form-control" />
-      <button class="save" @click="onUpdate">Save</button>
-      <button class="cancel" @click="deActivateInEditMode()">Cancel</button>
+      <div class="input-btn">
+        <input v-model="dish.price" type="number" class="form-control" />
+        <button class="btn btn-success" @click="onUpdate">Save</button>
+        <button class="btn btn-danger" @click="deActivateInEditMode()">cancel</button>
+      </div>
     </span>
     <td>
-      <button class="delete" @click="onDelete">Delete</button>
+      <button class="btn btn-danger" @click="onDelete">Delete</button>
     </td>
   </tr>
 </template>
@@ -77,23 +79,8 @@ export default {
 *{
   outline: none;
 }
-.cancel{
-  background-color: crimson;
-  color:white;
-  border-radius: 10px;
-  border-width: 0.5px;
-}
-.save{
-  background-color: green;
-  color:white;
-  border-radius: 10px;
-  border-width: 0.5px;
-}
-.delete{
-  background-color:orangered;
-  color:white;
-  border-radius: 10px;
-  border-width: 0.5px;
+.input-btn{
+  display:inline-flex
 }
 .form-control{
   border:none;

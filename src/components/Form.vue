@@ -4,6 +4,7 @@
       <div class="fields">
         <label>Title</label>
         <input
+          class="form-control"
           type="text"
           name="title"
           placeholder="Title"
@@ -13,6 +14,7 @@
 
         <label>Description</label>
         <input
+          class="form-control"
           type="text"
           name="description"
           placeholder="Descritption"
@@ -22,6 +24,7 @@
 
         <label>Price</label>
         <input
+          class="form-control"
           type="number"
           min="0"
           name="price"
@@ -30,8 +33,8 @@
           :value="form.price"
         />
         <div>
-          <button class="save" @click="storeDish">Create</button>
-          <button class="cancel" @click="toggleForm">Cancel</button>
+          <button class="btn btn-success" @click="storeDish">Create</button>
+          <button class="btn btn-warning" @click="toggleForm">Cancel</button>
         </div>
       </div>
     </form>
@@ -88,26 +91,12 @@ export default {
 .fields {
   display: flex;
   flex-direction: column;
-  width: 12rem;
+  width: 20rem;
 }
-.save {
-  background-color: green;
-  color: white;
-  border-radius: 10px;
-  border-width: 0.5px;
-  padding: 0.5em;
-  width: 5em;
-  margin: 0.5em;
+.btn{
+  margin: 1rem;
 }
-.cancel {
-  background-color:orangered;
-  color: white;
-  border-radius: 10px;
-  border-width: 0.5px;
-  padding: 0.5em;
-  width: 5em;
-  margin: 0.5em;
-}
+
 label {
   text-align: start;
   padding: 0.1em;
