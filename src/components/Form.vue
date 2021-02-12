@@ -31,7 +31,7 @@
         />
         <div>
           <button class="save" @click="storeDish">Create</button>
-          <button class="cancel">Cancel</button>
+          <button class="cancel" @click="toggleForm">Cancel</button>
         </div>
       </div>
     </form>

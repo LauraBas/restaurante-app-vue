@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <button class="add" @click="displayForm"  v-show="!createMode">Add</button>
-    <Form v-show="createMode" :form="form" @storeDish="storeDish" />
+    <button class="add" @click="toggleForm" v-show="!createMode">Add</button>
+    <Form v-show="createMode" 
+    :form="form" 
+    @storeDish="storeDish"
+    @toggleForm="toggleForm" />
     <div>
       <table>
         <thead>
@@ -66,15 +69,14 @@ export default {
     },
     async storeDish(dish) {
       await ApiClient.storeDishApi(dish);
-      this.createMode = false;
+      this.toggleForm();
       this.getDishes();
     },
     async onUpdate(id) {
       await ApiClient.updateDishApi(id);
     },
-
-    displayForm(){
-      this.createMode = true;
+    toggleForm(){
+      this.createMode = !this.createMode;
     }
   }
 };
