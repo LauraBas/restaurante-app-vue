@@ -2,7 +2,7 @@
 
 ## Excercice for the Bootcamp F5
 
-### Create a Api with the Frontend in Vue
+### Create an Api with the frontend in Vue
 
 ## Project setup
 ```
