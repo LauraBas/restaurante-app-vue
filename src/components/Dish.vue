@@ -9,54 +9,39 @@
       <button class="btn btn-warning" @click="deActivateInEditMode()">
         Cancel
       </button>
-      <button class="btn btn-success" @click="updateDish(dish.id)">Save</button>
+      <button class="btn btn-success" @click="onUpdate">Save</button>
     </span>
-    <td
-      v-on:click="activateInEditMode('description')"
-      v-show="!isEditingDescription"
-    >
-      {{ dish.description }}
+    <td>{{ dish.description }}</td>
+    <td>{{ dish.price }}</td>
+    <td>
+      <button class="mini ui red button" @click="onDelete">Delete</button>
     </td>
-    <span v-show="isEditingDescription">
-      <input v-model="dish.description" type="text" class="form-control" />
-      <button class="btn btn-warning" @click="deActivateInEditMode()">
-        Cancel
-      </button>
-      <button class="btn btn-success" @click="updateDish(dish.id)">Save</button>
-    </span>
-    <td v-on:click="activateInEditMode('price')" v-show="!isEditingPrice">
-      {{ dish.price }}
-    </td>
-    <span v-show="isEditingPrice">
-      <input v-model="dish.price" type="number" class="form-control" />
-      <button class="btn btn-warning" @click="deActivateInEditMode()">
-        Cancel
-      </button>
-      <button class="btn btn-success" @click="updateDish(dish.id)">Save</button>
-    </span>
-  <td>
-    <button class="mini ui red button" @click="onDelete">Delete</button>
-  </td>
   </tr>
 </template>
 
 <script>
 export default {
   name: "Dish",
-  isEditingTitle: 0,
-  isEditingDescription: 0,
-  isEditingPrice: 0,
-  dish: {
-    title: "",
-    description: "",
-    price: 0,
-  },
   props: {
     dish: {
       type: Object,
     },
   },
+  data() {
+    return {
+      isEditingTitle: 0,
+      isEditingDescription: 0,
+      isEditingPrice: 0,
+    };
+  },
   methods: {
+    onDelete() {
+      this.$emit("onDelete", this.dish.id);
+    },
+    onUpdate() {
+      this.deActivateInEditMode()
+      this.$emit("onUpdate", this.dish.id);
+    },
 
     activateInEditMode(name) {
       if (name == "title") {
@@ -74,14 +59,9 @@ export default {
       this.isEditingDescription = false;
       this.isEditingPrice = false;
     },
-    onDelete() {
-      this.$emit("onDelete", this.dish.id);
-    },
-    onEdit() {
-      this.$emit("onEdit", this.dish);
-    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

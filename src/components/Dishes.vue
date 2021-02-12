@@ -1,10 +1,11 @@
 <template>
   <div class="container">
+    <Form 
+        :form="form"
+        @storeDish="storeDish"
+        />
     <div>
-      <h3 class="text-center">All Dishes</h3>
-      <br />
-
-      <b-table-simple hover small caption-top responsive>
+      <table>
         <thead>
           <tr>
             <th>Id</th>
@@ -15,15 +16,15 @@
           </tr>
         </thead>
         <tbody>
-            <Dish
-              v-for="dish in dishes.data"
-              :key="dish.id"
-              :dish="dish"
-              @onDelete="onDelete"
-              @onEdit="onEdit"
-            />
+          <Dish
+            v-for="dish in dishes.data"
+            :key="dish.id"
+            :dish="dish"
+            @onDelete="onDelete"
+            @onUpdate="onUpdate"
+          />
         </tbody>
-      </b-table-simple>
+      </table>
     </div>
   </div>
 </template>
@@ -31,18 +32,23 @@
 <script>
 import ApiClient from "../services/ApiClient.js";
 import Dish from "./Dish";
+import Form from "./Form.vue";
+
 export default {
   name: "Dishes",
   components: {
-    Dish
-  },
-  props: {
-    dishes: {
-      type: Array
-    },
+    Dish,
+    Form,
   },
   data() {
     return {
+      dishes: {
+        type: Array,
+      },
+      form: { 
+        title: "",
+        description: "", 
+        price: "" },
     };
   },
 
@@ -58,31 +64,21 @@ export default {
       await ApiClient.deleteDishApi(id);
       this.getDishes();
     },
-    async storeDish() {
-      const dish = this.dish;
+    async storeDish(dish) {      
       await ApiClient.storeDishApi(dish);
-      this.closeModal();
       this.getDishes();
     },
-    async updateDish(id) {
+    async onUpdate(id) {
       await ApiClient.updateDishApi(id);
-      this.deActivateInEditMode();
     },
   },
 };
- 
 </script>
 
 <style>
-.show {
-  display: list-item;
-  opacity: 1;
-  background: rgba(75, 56, 143, 0.705);
-}
-.modal {
+table {
+  border: 1px black solid;
   padding: 10px;
-}
-.my-4 {
-  padding: 5px;
+  margin: 5px;
 }
 </style>

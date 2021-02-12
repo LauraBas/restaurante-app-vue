@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Dishes />
+
   </div>
 </template>
 
@@ -10,7 +11,7 @@ import Dishes from './components/Dishes.vue';
 export default {
   name: 'App',
   components: {
-    Dishes,
+    Dishes, 
   }
 }
 </script>
