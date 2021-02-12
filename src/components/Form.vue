@@ -29,7 +29,10 @@
           @change="handleChange"
           :value="form.price"
         />
-        <button class="ui orange button submit-button" @click="storeDish">Create</button>
+        <div>
+          <button class="save" @click="storeDish">Create</button>
+          <button class="cancel">Cancel</button>
+        </div>
       </div>
     </form>
   </div>
@@ -84,10 +87,35 @@ export default {
 };
 </script>
 <style scoped>
-.field {
+*{
+  outline: none;
+}
+.fields {
   display: flex;
   flex-direction: column;
   width: 12rem;
+}
+.save {
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  border-width: 0.5px;
+  padding: 0.5em;
+  width: 5em;
+  margin: 0.5em;
+}
+.cancel {
+  background-color:orangered;
+  color: white;
+  border-radius: 10px;
+  border-width: 0.5px;
+  padding: 0.5em;
+  width: 5em;
+  margin: 0.5em;
+}
+label {
+  text-align: start;
+  padding: 0.1em;
 }
 </style>
   

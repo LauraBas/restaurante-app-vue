@@ -74,6 +74,9 @@ export default {
 </script>
 
 <style scoped>
+*{
+  outline: none;
+}
 .cancel{
   background-color: crimson;
   color:white;
@@ -87,7 +90,7 @@ export default {
   border-width: 0.5px;
 }
 .delete{
-  background-color: blue;
+  background-color:orangered;
   color:white;
   border-radius: 10px;
   border-width: 0.5px;

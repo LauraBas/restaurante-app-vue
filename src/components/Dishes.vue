@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <Form :form="form" @storeDish="storeDish" />
+    <button class="add" @click="displayForm"  v-show="!createMode">Add</button>
+    <Form v-show="createMode" :form="form" @storeDish="storeDish" />
     <div>
       <table>
         <thead>
@@ -42,6 +43,7 @@ export default {
       dishes: {
         type: Array
       },
+      createMode: false,
       form: {
         title: "",
         description: "",
@@ -64,16 +66,24 @@ export default {
     },
     async storeDish(dish) {
       await ApiClient.storeDishApi(dish);
+      this.createMode = false;
       this.getDishes();
     },
     async onUpdate(id) {
       await ApiClient.updateDishApi(id);
+    },
+
+    displayForm(){
+      this.createMode = true;
     }
   }
 };
 </script>
 
 <style>
+*{
+  outline: none;
+}
 table {
   margin: 1rem;
   border-collapse: collapse;  
@@ -85,5 +95,13 @@ table td {
 table th {
   padding: 0.5rem;
   border: 1px solid ForestGreen;
+}
+.add{
+  background-color: yellow;
+  border-radius: 10px;
+  border-width: 0.5px;
+  padding: 0.5em;
+  width: 5em;
+  margin: 0.5em;
 }
 </style>
