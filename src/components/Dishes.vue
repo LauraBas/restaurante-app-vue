@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <Form 
-        :form="form"
-        @storeDish="storeDish"
-        />
+    <Form :form="form" @storeDish="storeDish" />
     <div>
       <table>
         <thead>
@@ -38,17 +35,18 @@ export default {
   name: "Dishes",
   components: {
     Dish,
-    Form,
+    Form
   },
   data() {
     return {
       dishes: {
-        type: Array,
+        type: Array
       },
-      form: { 
+      form: {
         title: "",
-        description: "", 
-        price: "" },
+        description: "",
+        price: ""
+      }
     };
   },
 
@@ -64,21 +62,28 @@ export default {
       await ApiClient.deleteDishApi(id);
       this.getDishes();
     },
-    async storeDish(dish) {      
+    async storeDish(dish) {
       await ApiClient.storeDishApi(dish);
       this.getDishes();
     },
     async onUpdate(id) {
       await ApiClient.updateDishApi(id);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style>
 table {
-  border: 1px black solid;
-  padding: 10px;
-  margin: 5px;
+  margin: 1rem;
+  border-collapse: collapse;  
+}
+table td {
+  padding: 0.5rem;
+  border: 1px solid orange;
+}
+table th {
+  padding: 0.5rem;
+  border: 1px solid ForestGreen;
 }
 </style>

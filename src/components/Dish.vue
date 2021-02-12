@@ -4,8 +4,8 @@
     <td v-on:click="activateInEditMode('title')" v-show="!isEditingTitle">{{ dish.title }}</td>
     <span v-show="isEditingTitle">
       <input v-model="dish.title" type="text" class="form-control" />
-      <button class="btn btn-warning" @click="deActivateInEditMode()">Cancel</button>
-      <button class="btn btn-success" @click="onUpdate">Save</button>
+      <button class="save" @click="onUpdate">Save</button>
+      <button class="cancel" @click="deActivateInEditMode()">Cancel</button>
     </span>
     <td
       v-on:click="activateInEditMode('description')"
@@ -13,18 +13,18 @@
     >{{ dish.description }}</td>
     <span v-show="isEditingDescription">
       <input v-model="dish.description" type="text" class="form-control" />
-      <button class="btn btn-warning" @click="deActivateInEditMode()">Cancel</button>
-      <button class="btn btn-success" @click="onUpdate">Save</button>
+      <button class="save" @click="onUpdate">Save</button>
+      <button class="cancel" @click="deActivateInEditMode()">Cancel</button>
     </span>
 
     <td v-on:click="activateInEditMode('price')" v-show="!isEditingPrice">{{ dish.price }}</td>
     <span v-show="isEditingPrice">
       <input v-model="dish.price" type="number" class="form-control" />
-      <button class="btn btn-warning" @click="deActivateInEditMode()">Cancel</button>
-      <button class="btn btn-success" @click="onUpdate">Save</button>
+      <button class="save" @click="onUpdate">Save</button>
+      <button class="cancel" @click="deActivateInEditMode()">Cancel</button>
     </span>
     <td>
-      <button class="mini ui red button" @click="onDelete">Delete</button>
+      <button class="delete" @click="onDelete">Delete</button>
     </td>
   </tr>
 </template>
@@ -74,4 +74,25 @@ export default {
 </script>
 
 <style scoped>
+.cancel{
+  background-color: crimson;
+  color:white;
+  border-radius: 10px;
+  border-width: 0.5px;
+}
+.save{
+  background-color: green;
+  color:white;
+  border-radius: 10px;
+  border-width: 0.5px;
+}
+.delete{
+  background-color: blue;
+  color:white;
+  border-radius: 10px;
+  border-width: 0.5px;
+}
+.form-control{
+  border:none;
+}
 </style>
