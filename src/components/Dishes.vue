@@ -106,4 +106,8 @@ table th {
   width: 5em;
   margin: 0.5em;
 }
+.container{
+  display: flex;
+  flex-direction: column;
+}
 </style>

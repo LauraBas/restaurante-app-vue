@@ -57,7 +57,6 @@ export default {
       event.preventDefault();
       if (this.formValidation()) {
         this.$emit("storeDish", this.form);
-        this.clearFormFields();
       }
     },
     formValidation() {
@@ -65,7 +64,6 @@ export default {
         alert("Field  Required");
         return false;
       }
-
       if (document.getElementsByName("description")[0].value === "") {
         alert("Field  Required");
         return false;
@@ -77,11 +75,8 @@ export default {
       }
       return true;
     },
-    clearFormFields() {
-      this.form.title = "";
-      this.form.description = "";
-      this.form.price = "";
-      document.querySelector(".form").reset();
+    toggleForm() {
+      this.$emit("toggleForm")
     }
   }
 };
