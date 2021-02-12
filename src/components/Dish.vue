@@ -80,9 +80,12 @@ export default {
   outline: none;
 }
 .input-btn{
-  display:inline-flex
+  display:flex
 }
 .form-control{
   border:none;
+}
+.btn{
+  margin:2px;
 }
 </style>
