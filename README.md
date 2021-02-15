@@ -2,6 +2,8 @@
 
 ## Excercice for the Bootcamp F5
 
+### Create an Api with the frontend in Vue
+
 ## Project setup
 ```
 npm install
