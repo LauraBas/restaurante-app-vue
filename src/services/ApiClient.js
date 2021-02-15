@@ -11,8 +11,8 @@ class ApiClient {
        return axios.post(`http://127.0.0.1:8001/api/dishes`, dish)
        
     }
-    static updateDishApi(id) {
-        axios.patch(`http://127.0.0.1:8001/api/dishes/${id}`)         
+    static updateDishApi(data) {
+        axios.patch(`http://127.0.0.1:8001/api/dishes/${data.id}`, data)         
     }
 }
 export default ApiClient;
